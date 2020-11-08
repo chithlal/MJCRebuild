@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">MJC</string>
+    <string name="text_consumer">Consumer</string>
+    <string name="text_engineer">Engineer</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_home">Home</string>
+    <string name="text_request">Requests</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">Passwod</string>
+    <string name="text_login">Login</string>
+    <string name="text_signup_nav_text">New here?</string>
+    <string name="text_register">Register</string>
+    <string name="text_name">Name</string>
+    <string name="text_phone">Phone</string>
+    <string name="text_signup">Signup</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_house">House</string>
+    <string name="text_add_requirement">Add your requirements here</string>
+    <string name="text_upload_plan">Upload Plan</string>
+    <string name="text_add_measurement">Add Measurement</string>
+    <string name="text_total_area">Total Area (Cents)</string>
+    <string name="text_building_area">Building Area (Sq.Ft)</string>
+    <string name="text_continue">Continue</string>
+    <string name="text_add_file">Add File</string>
+    <string name="text_proessing">Processing</string>
 </resources>

@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    //app colors
+    <color name="mjc_blue">#0eaff7</color>
+    <color name="mjc_red">#ff6826</color>
+    <color name="mjc_green">#0d9d85</color>
+    <color name="mjc_grey">#707070</color>
+    <color name="mjc_black">#141212</color>
 </resources>
