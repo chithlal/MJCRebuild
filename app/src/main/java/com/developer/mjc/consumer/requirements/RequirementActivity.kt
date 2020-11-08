@@ -7,10 +7,12 @@ import android.os.CountDownTimer
 import android.widget.Toast
 import com.developer.mjc.R
 import com.developer.mjc.consumer.engineerslist.EngineerListActivity
+import com.developer.mjc.model.requirements.ConstructionRequirements
 import com.developer.mjc.util.*
 import com.developer.mjc.util.ErrorViewHelper.Companion.disableErrorBlueBg
 import com.developer.mjc.util.ErrorViewHelper.Companion.enableError
 import com.developer.mjc.util.ProccessingBottomSheet.Companion.DIALOG_TYPE_PROCESSING
+import com.pixplicity.easyprefs.library.Prefs
 import kotlinx.android.synthetic.main.activity_requirement.*
 import kotlinx.android.synthetic.main.main_toolbar.view.*
 import org.greenrobot.eventbus.EventBus
@@ -22,6 +24,7 @@ import org.shagi.filepicker.FilePickerDialog
 import org.shagi.filepicker.FilePickerFragment
 import java.io.File
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.concurrent.schedule
 
@@ -29,6 +32,7 @@ class RequirementActivity : AppCompatActivity() {
     private lateinit var fileListFrag: FileListHelperFragment
 
     private var planFileList = HashMap<String,File>()
+    private var request: ConstructionRequirements? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +59,7 @@ class RequirementActivity : AppCompatActivity() {
     private fun setupView() {
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
-         fileListFrag = FileListHelperFragment.newInstance(arrayListOf())
+         fileListFrag = FileListHelperFragment.newInstance(arrayListOf(),false)
         transaction.replace(frame_file_list.id,fileListFrag)
         transaction.commit()
 
@@ -85,8 +89,12 @@ class RequirementActivity : AppCompatActivity() {
             Toast.makeText(this, "Please add a plan!", Toast.LENGTH_SHORT).show()
             return
         }
-
+        Prefs.putString(MjcConstants.KEY_BUILDING_AREA,buildingArea)
+        Prefs.putString(MjcConstants.KEY_TOTAL_AREA,totalArea)
         uploadPlans()
+        val userId = ""
+
+        //request = ConstructionRequirements(userId,)
 
     }
 
@@ -97,9 +105,15 @@ class RequirementActivity : AppCompatActivity() {
 
         //bottomSheetProcessing.setProcessingStatus("Uploading files..")
         Timer("Startup",false).schedule(1000){
-
+            val planList = ArrayList<String>()
+            for( item in planFileList.toList())
+            {
+                planList.add(item.first)
+            }
             bottomSheetProcessing.dismiss()
-            startActivity(Intent(this@RequirementActivity,EngineerListActivity::class.java))
+            val intent = Intent(this@RequirementActivity,EngineerListActivity::class.java)
+            intent.putStringArrayListExtra(MjcConstants.KEY_PLAN_LIST,planList)
+            startActivity(intent)
         }
     }
 

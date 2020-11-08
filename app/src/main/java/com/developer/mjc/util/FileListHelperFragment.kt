@@ -18,19 +18,21 @@ import org.greenrobot.eventbus.EventBus
 
 
 private const val ARG_FILE_LIST = "file_list"
+private const val ARG_IS_PREVIEW = "is Preview"
 
 
 
 class FileListHelperFragment : Fragment() {
 
     private var fileList: ArrayList<String>? = null
-    private var param2: String? = null
+    private var isPreview: Boolean = false
     private var adapter: FileListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             fileList = it.getStringArrayList(ARG_FILE_LIST)
+            isPreview = it.getBoolean(ARG_IS_PREVIEW)
         }
     }
 
@@ -43,6 +45,8 @@ class FileListHelperFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (isPreview)
+            btFileViewerAddFile.visibility = View.GONE
         rvFileViewer.layoutManager = LinearLayoutManager(context)
         if (fileList != null)
         adapter = FileListAdapter(context!!,fileList!!,object :FileListAdapter.FileViewerListener{
@@ -54,7 +58,8 @@ class FileListHelperFragment : Fragment() {
                 }
             }
 
-        })
+        },
+        isPreview)
         rvFileViewer.adapter = adapter
 
         btFileViewerAddFile.setOnClickListener{
@@ -67,13 +72,15 @@ class FileListHelperFragment : Fragment() {
         }
     }
 
+
     companion object {
 
         @JvmStatic
-        fun newInstance(fileList: List<String>) =
+        fun newInstance(fileList: List<String>,isPreview: Boolean ) =
                 FileListHelperFragment().apply {
                     arguments = Bundle().apply {
                         putStringArrayList(ARG_FILE_LIST, fileList as ArrayList<String>)
+                        putBoolean(ARG_IS_PREVIEW,isPreview)
                     }
                 }
     }
@@ -81,7 +88,7 @@ class FileListHelperFragment : Fragment() {
 
 class FileListAdapter(val context: Context,
                       val fileList: ArrayList<String>,
-                    val listner: FileViewerListener): RecyclerView.Adapter<FileListAdapter.ViewHolder>() {
+                    val listner: FileViewerListener,val isPreview: Boolean): RecyclerView.Adapter<FileListAdapter.ViewHolder>() {
     class ViewHolder(view: View):RecyclerView.ViewHolder(view) {
 
         val fileName = view.tvFileViewerFileName
@@ -94,6 +101,8 @@ class FileListAdapter(val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (isPreview)
+            holder.btRemoveFile.visibility = View.GONE
         holder.fileName.text = fileList[position]
         holder.btRemoveFile.setOnClickListener{
 

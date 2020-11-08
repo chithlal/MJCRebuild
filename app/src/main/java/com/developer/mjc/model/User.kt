@@ -1,5 +1,7 @@
 package com.developer.mjc.model
 
+import java.io.Serializable
+
 data class User(
     val id: String,
     val name: String,
@@ -16,8 +18,7 @@ data class User(
     val works: List<Work>? = null
 
 
-) {
-}
+): Serializable
 
 data class Address(
     val houseName: String,

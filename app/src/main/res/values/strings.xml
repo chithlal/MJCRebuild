@@ -26,4 +26,15 @@
     <string name="text_proessing">Processing</string>
     <string name="text_work_completed">Works completed</string>
     <string name="text_select_engineer_to_proceed">Select engineer to proceed</string>
+    <string name="text_payment">Payment</string>
+    <string name="text_works_completed">Works completed</string>
+    <string name="text_about_me">About me</string>
+    <string name="text_placeholder_long">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industry's standard "</string>
+    <string name="text_hire_me">Hire Me</string>
+    <string name="text_review_your_req">Review your requirements</string>
+    <string name="text_uploaded_plan">Uploaded plan</string>
+    <string name="text_total_area_title">Total Area</string>
+    <string name="text_building_area_title">Building Area</string>
+    <string name="text_send_req">Send Request</string>
+    <string name="text_selected_engineer">Selected Engineer</string>
 </resources>
