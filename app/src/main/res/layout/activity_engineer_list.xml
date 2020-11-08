@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="@dimen/text_size_16"
-            android:text="@string/text_add_requirement"
+            android:text="@string/text_select_engineer_to_proceed"
             android:textColor="@color/mjc_grey">
 
         </TextView>

@@ -24,4 +24,6 @@
     <string name="text_continue">Continue</string>
     <string name="text_add_file">Add File</string>
     <string name="text_proessing">Processing</string>
+    <string name="text_work_completed">Works completed</string>
+    <string name="text_select_engineer_to_proceed">Select engineer to proceed</string>
 </resources>

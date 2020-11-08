@@ -1,10 +1,12 @@
 package com.developer.mjc.consumer.requirements
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Toast
 import com.developer.mjc.R
+import com.developer.mjc.consumer.engineerslist.EngineerListActivity
 import com.developer.mjc.util.*
 import com.developer.mjc.util.ErrorViewHelper.Companion.disableErrorBlueBg
 import com.developer.mjc.util.ErrorViewHelper.Companion.enableError
@@ -97,6 +99,7 @@ class RequirementActivity : AppCompatActivity() {
         Timer("Startup",false).schedule(1000){
 
             bottomSheetProcessing.dismiss()
+            startActivity(Intent(this@RequirementActivity,EngineerListActivity::class.java))
         }
     }
 
