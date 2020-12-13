@@ -45,7 +45,6 @@ class AddWorkActivity : AppCompatActivity() {
             return
         }
         if (!CredsValidationHelper.isValidInputText(description)){
-
             etAddWorkDescription.enableError("Invalid input")
             return
         }
