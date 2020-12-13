@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.developer.mjc.R
 import com.developer.mjc.databinding.ActivityHomeBinding
 import com.developer.mjc.home.fragment.consumer.ConsumerLandingFragment
+import com.developer.mjc.profile.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityHomeBinding
@@ -26,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
             when(menuItem.itemId){
                 R.id.nav_action_profile ->{
                     mBinding.toolbarHome.tvAdminToolbarHeading.text = "Profile"
-                    openFragment(Fragment())
+                    openFragment(ProfileFragment.newInstance("123",false))
                 }
                 R.id.nav_action_home ->{
                     mBinding.toolbarHome.tvAdminToolbarHeading.text = "Home"

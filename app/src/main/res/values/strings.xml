@@ -37,4 +37,22 @@
     <string name="text_building_area_title">Building Area</string>
     <string name="text_send_req">Send Request</string>
     <string name="text_selected_engineer">Selected Engineer</string>
+    <string name="text_see_and_add_your_work">See and add your work</string>
+    <string name="text_address">Address</string>
+    <string name="text_place">Place</string>
+    <string name="text_district">District</string>
+    <string name="text_state">State</string>
+    <string name="text_save">Save</string>
+    <string name="text_upload_id_proof">Upload ID Proof</string>
+    <string name="text_id_proof">Identity proof</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_fees">Fees</string>
+    <string name="text_you_can_see_and_add_works_here">You can see and add works here</string>
+    <string name="text_add_work">Add works</string>
+    <string name="text_view_work">Add your wors here</string>
+    <string name="text_work_name">Work Name</string>
+    <string name="text_owner_name">Owner Name</string>
+    <string name="text_add_work_photo">Add photos of your works</string>
+    <string name="text_date_of_completion">Date of completion</string>
+    <string name="text_description">Description</string>
 </resources>
