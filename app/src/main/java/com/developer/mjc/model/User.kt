@@ -15,7 +15,7 @@ data class User(
     val doj: String,
     val fees: String? = null,
     val occupation: String,
-    val works: List<Work>? = null
+    val works: List<String>? = null
 
 
 ): Serializable

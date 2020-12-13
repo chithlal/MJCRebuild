@@ -2,8 +2,11 @@ package com.developer.mjc.signup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.developer.mjc.R
 import com.developer.mjc.databinding.ActivitySignupBinding
+import com.developer.mjc.model.User
 import com.developer.mjc.util.CredsValidationHelper
 import com.developer.mjc.util.ErrorViewHelper.Companion.disableErrorBlueBg
 import com.developer.mjc.util.ErrorViewHelper.Companion.enableError
@@ -62,5 +65,10 @@ class SignupActivity : AppCompatActivity() {
         else{
             mBinding.tvSignupPassword.disableErrorBlueBg()
         }
+
+        val user = User(name = name,email = email,isEngineer = false,)
+        val signupViewMode = SignUpViewModel()
+        signupViewMode.signLiveData.observe(this, Observer {
+        })
     }
 }

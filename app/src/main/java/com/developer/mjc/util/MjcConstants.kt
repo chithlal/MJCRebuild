@@ -3,6 +3,7 @@ package com.developer.mjc.util
 class MjcConstants {
     companion object{
 
+        const val IMAGE_PLACE_HOLDER = "https://miro.medium.com/max/500/0*-ouKIOsDCzVCTjK-.png"
         const val KEY_PLAN_LIST: String = "planList"
         const val KEY_USER_ID = "user_id"
         const val KEY_USER_TYPE = "user_type"
