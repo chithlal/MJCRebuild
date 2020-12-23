@@ -12,14 +12,16 @@ import com.google.firebase.ktx.Firebase
 class FirestoreClass {
 
     private val mFirestore = FirebaseFirestore.getInstance()
-    fun registerUser(activity: SignupActivity, userInfo:User){
+    fun registerUser( userInfo:User, firebaseListener: FirebaseListener){
         mFirestore.collection(MjcConstants.USERS).document(getCurrentUserID()).set(userInfo,
             SetOptions.merge()).addOnSuccessListener {
 
                 // Method when successfully completed
-                Toast.makeText(activity,"Successfully Registered",Toast.LENGTH_SHORT).show()
+               firebaseListener.onSuccess(userInfo)
                 FirebaseAuth.getInstance().signOut()
         }
+
+
     }
 
     //Function to get current user id
@@ -27,8 +29,8 @@ class FirestoreClass {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
 
-    interface firebaseListener{
-        fun onSuccess(messageString: String)
+    interface FirebaseListener{
+        fun onSuccess(userInfo: User)
         fun onFailture(messageString: String)
 
     }

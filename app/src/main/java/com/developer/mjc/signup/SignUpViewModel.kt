@@ -12,9 +12,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.ktx.Firebase
 
 
-class SignUpViewModel(): ViewModel() {
+class SignUpViewModel(): ViewModel(),FirestoreClass.FirebaseListener {
 
      val signLiveData = MutableLiveData<User>()
+     val signupErrorLiveData = MutableLiveData<String>()
 
 
     fun signUp(signupData: User, pwd:String,context:Context){
@@ -24,11 +25,28 @@ class SignUpViewModel(): ViewModel() {
             if(task.isSuccessful){
                 val firebaseUser : FirebaseUser = task.result!!.user!!
                 val user = User(firebaseUser.uid,signupData.name,signupData.email,signupData.phone)
-                FirestoreClass().registerUser(context as Activity,user)
-                signupData.id = firebaseUser.uid
-                signLiveData.postValue(signupData)
+                FirestoreClass().registerUser(user, object : FirestoreClass.FirebaseListener{
+                    override fun onSuccess(userInfo: User) {
+                        signLiveData.postValue(userInfo)
+                    }
+
+                    override fun onFailture(messageString: String) {
+                        signupErrorLiveData.postValue(messageString)
+                    }
+
+                })
+
+
             }
         }
 
+    }
+
+    override fun onSuccess(userInfo: User) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailture(messageString: String) {
+        TODO("Not yet implemented")
     }
 }
