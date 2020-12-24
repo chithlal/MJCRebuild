@@ -20,8 +20,6 @@ class FirestoreClass {
                firebaseListener.onSuccess(userInfo)
                 FirebaseAuth.getInstance().signOut()
         }
-
-
     }
 
     //Function to get current user id
@@ -32,7 +30,5 @@ class FirestoreClass {
     interface FirebaseListener{
         fun onSuccess(userInfo: User)
         fun onFailture(messageString: String)
-
     }
-
 }
